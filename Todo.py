@@ -2,15 +2,16 @@
 tasks = []
 archived_tasks = []
 
+
 # Function to add a task (starts as 'Pending')
 def add_task(task):
-    """Add a new task to the list (starts as pending)"""
+    #Add a new task to the list (starts as pending)
     tasks.append({"task": task, "completed": False, "status": "Pending"})
     print(f"Task '{task}' added to your to-do list (Pending approval)!")
 
 # Function to approve a task (move from Pending to Incomplete)
 def approve_task(task_number):
-    """Approve a task to move it from 'Pending' to 'Incomplete'"""
+    #Approve a task to move it from 'Pending' to 'Incomplete'
     pending_tasks = [task for task in tasks if task["status"] == "Pending"]
     
     if 0 < task_number <= len(pending_tasks):
@@ -23,7 +24,7 @@ def approve_task(task_number):
 
 # Function to view all tasks
 def view_tasks():
-    """View all tasks with their completion status and categories"""
+    #View all tasks with their completion status and categories
     if not tasks:
         print("Your to-do list is empty.")
     else:
@@ -36,7 +37,7 @@ def view_tasks():
 
 # Function to view pending tasks
 def view_pending_tasks():
-    """View only pending tasks (those waiting for approval)"""
+    #View only pending tasks (those waiting for approval)
     pending_tasks = [task for task in tasks if task["status"] == "Pending"]
 
     if not pending_tasks:
@@ -49,7 +50,7 @@ def view_pending_tasks():
 
 # Function to mark a task as complete
 def complete_task(task_number):
-    """Mark a task as complete by its number"""
+    #Mark a task as complete by its number
     if 0 < task_number <= len(tasks):
         if tasks[task_number - 1]["status"] == "Incomplete":
             tasks[task_number - 1]["completed"] = True
@@ -62,7 +63,7 @@ def complete_task(task_number):
 
 # Function to remove a task (moves it to archived tasks)
 def remove_task(task_number):
-    """Remove a task and archive it"""
+      #Remove a task and archive it
     if 0 < task_number <= len(tasks):
         removed_task = tasks.pop(task_number - 1)
         archived_tasks.append(removed_task)
@@ -72,7 +73,7 @@ def remove_task(task_number):
 
 # Function to view archived tasks
 def view_archived_tasks():
-    """View all archived tasks"""
+    #View all archived tasks
     if not archived_tasks:
         print("No tasks in the archive.")
     else:
@@ -83,7 +84,7 @@ def view_archived_tasks():
 
 # Function to restore a task from the archive
 def restore_task(task_number):
-    """Restore a task from the archive back to the active task list"""
+    #Restore a task from the archive back to the active task list
     if 0 < task_number <= len(archived_tasks):
         restored_task = archived_tasks.pop(task_number - 1)
         tasks.append(restored_task)
